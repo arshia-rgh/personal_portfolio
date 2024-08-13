@@ -84,6 +84,8 @@ class JobExperienceModelTestCase(BaseModelTestCase, TestCase):
 
     @skip
     def test_years_of_experience_property(self):
+        # TODO years_of_experience bug should be fixed
+
         instance1 = self.model._default_manager.create(
             company_name="test",
             position="Test position",
