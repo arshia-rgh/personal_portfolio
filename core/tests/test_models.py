@@ -6,7 +6,8 @@ from core.models import (
     Skill,
     Project,
     JobExperience,
-    # Education, Interest, Certificate
+    Education,
+    # Interest, Certificate
 )
 
 
@@ -95,8 +96,28 @@ class JobExperienceModelTestCase(BaseModelTestCase, TestCase):
         self.assertEqual(instance1.years_of_experience, 1)
 
 
-class EducationModelTestCase(TestCase):
-    pass
+class EducationModelTestCase(BaseModelTestCase, TestCase):
+    model = Education
+    fields = {
+        "university_name": "Test university",
+        "degree": "bachelor",
+        "start_date": timezone.datetime(2020, 1, 1),
+    }
+    fields_2 = {
+        "university_name": "Test university 2 ",
+        "degree": "bachelor",
+        "start_date": timezone.datetime(2023, 2, 2),
+    }
+
+    def test_str_representation(self):
+        instance = self.model(**self.fields)
+        self.assertEqual(
+            str(instance), instance.university_name + " " + instance.degree
+        )
+
+    def test_custom_save_logic(self):
+        instance = self.model._default_manager.create(**self.fields)
+        self.assertEqual(instance.end_date.hour, timezone.now().hour)
 
 
 class InterestModelTestCase(TestCase):

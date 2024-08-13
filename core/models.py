@@ -49,11 +49,23 @@ class JobExperience(BaseModel):
         return f"{self.company_name} {self.position}"
 
 
-# class Education(BaseModel):
-#     pass
-#
-#
-# class Interest(BaseModel):
+class Education(BaseModel):
+    university_name = models.CharField(max_length=200)
+    degree = models.CharField(max_length=100)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField(default=None, blank=True, null=True)
+
+    def save(self, **kwargs):
+        if self.end_date is None:
+            self.end_date = timezone.now()
+        super().save(**kwargs)
+
+    def __str__(self):
+        return f"{self.university_name} {self.degree}"
+
+    # class Interest(BaseModel):
+
+
 #     pass
 #
 #
