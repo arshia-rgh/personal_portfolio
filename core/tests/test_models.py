@@ -1,5 +1,9 @@
 from django.test import TestCase
-from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
+from core.models import (
+    Skill,
+    Project,
+    # JobExperience, Education, Interest, Certificate
+)
 
 
 class BaseModelTestCase:
@@ -36,8 +40,23 @@ class SkillModelTestCase(BaseModelTestCase, TestCase):
     fields_2 = {"name": "django", "logo": None}
 
 
-class ProjectModelTestCase(TestCase):
-    pass
+class ProjectModelTestCase(BaseModelTestCase, TestCase):
+    model = Project
+
+    fields = {
+        "name": "RPC",
+        "source_link": "www.example.com",
+        "live_link": None,
+        "description": "TEST PROJECT",
+        "status": "Ongoing",
+    }
+    fields_2 = {
+        "name": "RPC_2",
+        "source_link": "www.example2.com",
+        "live_link": None,
+        "description": "TEST PROJECT2",
+        "status": "Ongoing",
+    }
 
 
 class JobExperienceModelTestCase(TestCase):
