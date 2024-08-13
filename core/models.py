@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 from utils.base_model import BaseModel
 
 
@@ -28,10 +28,27 @@ class Project(BaseModel):
         return self.name
 
 
-# class JobExperience(BaseModel):
-#     pass
-#
-#
+class JobExperience(BaseModel):
+    company_name = models.CharField(max_length=200)
+    position = models.CharField(max_length=100)
+    start_date = models.DateTimeField(auto_now_add=True)
+    end_date = models.DateTimeField(default=None, blank=True, null=True)
+
+    @property
+    def years_of_experience(self):
+        if self.end_date:
+            return self.end_date.year - self.start_date.year
+        return 0
+
+    def save(self, **kwargs):
+        if self.end_date is None:
+            self.end_date = timezone.now()
+        super().save(**kwargs)
+
+    def __str__(self):
+        return f"{self.company_name} {self.position}"
+
+
 # class Education(BaseModel):
 #     pass
 #
