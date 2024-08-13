@@ -1,5 +1,7 @@
-from django.db import models
+from django_extensions.db.models import TimeStampedModel
 
 
-class BaseModel(models.Model):
-    pass
+class BaseModel(TimeStampedModel):
+    class Meta:
+        abstract = True
+        ordering = ["-created"]
