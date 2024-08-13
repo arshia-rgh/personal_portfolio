@@ -4,6 +4,7 @@ from core.models import Skill, Project, JobExperience, Education, Interest, Cert
 
 class BaseModelTestCase:
     model = None
+    # should contain only non default fields
     fields = {}
     fields_2 = {}
 
@@ -21,6 +22,12 @@ class BaseModelTestCase:
     def test_str_representation(self):
         instance = self.model(**self.fields)
         self.assertEqual(str(instance), instance.name)
+
+    def test_default_values(self):
+        instance = self.model(**self.fields)
+        for field in self.model._meta.fields:
+            if field.has_default():
+                self.assertEqual(getattr(instance, field.name), field.default)
 
 
 class SkillModelTestCase(TestCase):
