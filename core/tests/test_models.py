@@ -18,6 +18,10 @@ class BaseModelTestCase:
 
         self.assertEqual(list(instances), [instance2, instance1])
 
+    def test_str_representation(self):
+        instance = self.model(**self.fields)
+        self.assertEqual(str(instance), instance.name)
+
 
 class SkillModelTestCase(TestCase):
     pass
