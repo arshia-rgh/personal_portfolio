@@ -8,7 +8,7 @@ from core.models import (
     JobExperience,
     Education,
     Interest,
-    # Certificate
+    Certificate,
 )
 
 
@@ -137,5 +137,11 @@ class InterestModelTestCase(BaseModelTestCase, TestCase):
     }
 
 
-class CertificateModelTestCase(TestCase):
-    pass
+class CertificateModelTestCase(BaseModelTestCase, TestCase):
+    model = Certificate
+    fields = {
+        "name": "Python course",
+    }
+    fields_2 = {
+        "name": "django course",
+    }

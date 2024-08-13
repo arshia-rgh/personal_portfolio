@@ -72,5 +72,9 @@ class Interest(BaseModel):
         return self.name
 
 
-# class Certificate(BaseModel):
-#     pass
+class Certificate(BaseModel):
+    name = models.CharField(max_length=200)
+    certificate_link = models.URLField("link", blank=True, null=True)
+
+    def __str__(self):
+        return self.name
