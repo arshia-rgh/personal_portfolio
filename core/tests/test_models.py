@@ -42,8 +42,14 @@ class BaseModelTestCase:
 
 class SkillModelTestCase(BaseModelTestCase, TestCase):
     model = Skill
-    fields = {"name": "python", "logo": None}
-    fields_2 = {"name": "django", "logo": None}
+    fields = {
+        "name": "python",
+        "logo": None,
+    }
+    fields_2 = {
+        "name": "django",
+        "logo": None,
+    }
 
 
 class ProjectModelTestCase(BaseModelTestCase, TestCase):
