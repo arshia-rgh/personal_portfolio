@@ -88,7 +88,7 @@ class JobExperienceModelTestCase(BaseModelTestCase, TestCase):
             company_name="test",
             position="Test position",
             start_date=timezone.datetime(2019, 8, 1),
-            end_date=timezone.datetime(2024, 1, 11),
+            end_date=timezone.datetime(2020, 1, 11),
         )
         self.assertEqual(instance1.years_of_experience, 1)
 
