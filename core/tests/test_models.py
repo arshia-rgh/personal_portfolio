@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.db.models import fields
 from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
 
 
