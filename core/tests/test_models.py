@@ -30,8 +30,10 @@ class BaseModelTestCase:
                 self.assertEqual(getattr(instance, field.name), field.default)
 
 
-class SkillModelTestCase(TestCase):
-    pass
+class SkillModelTestCase(BaseModelTestCase, TestCase):
+    model = Skill
+    fields = {"name": "python", "logo": None}
+    fields_2 = {"name": "django", "logo": None}
 
 
 class ProjectModelTestCase(TestCase):
