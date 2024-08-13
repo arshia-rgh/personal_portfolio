@@ -1,3 +1,25 @@
-from django.db import models
+from utils.base_model import BaseModel
 
-# Create your models here.
+
+class Skill(BaseModel):
+    pass
+
+
+class Project(BaseModel):
+    pass
+
+
+class JobExperience(BaseModel):
+    pass
+
+
+class Education(BaseModel):
+    pass
+
+
+class Interest(BaseModel):
+    pass
+
+
+class Certificate(BaseModel):
+    pass
