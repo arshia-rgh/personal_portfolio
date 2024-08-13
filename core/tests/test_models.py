@@ -7,7 +7,8 @@ from core.models import (
     Project,
     JobExperience,
     Education,
-    # Interest, Certificate
+    Interest,
+    # Certificate
 )
 
 
@@ -120,8 +121,14 @@ class EducationModelTestCase(BaseModelTestCase, TestCase):
         self.assertEqual(instance.end_date.hour, timezone.now().hour)
 
 
-class InterestModelTestCase(TestCase):
-    pass
+class InterestModelTestCase(BaseModelTestCase, TestCase):
+    model = Interest
+    fields = {
+        "name": "game",
+    }
+    fields_2 = {
+        "name": "game2",
+    }
 
 
 class CertificateModelTestCase(TestCase):

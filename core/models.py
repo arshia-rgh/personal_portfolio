@@ -63,11 +63,14 @@ class Education(BaseModel):
     def __str__(self):
         return f"{self.university_name} {self.degree}"
 
-    # class Interest(BaseModel):
+
+class Interest(BaseModel):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
 
-#     pass
-#
-#
 # class Certificate(BaseModel):
 #     pass
