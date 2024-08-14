@@ -7,6 +7,10 @@ class Skill(BaseModel):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     logo = models.ImageField(upload_to="media/skills/", blank=True, null=True)
+    priority = models.IntegerField()
+
+    class Meta:
+        ordering = ["priority"]
 
     def __str__(self):
         return self.name

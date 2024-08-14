@@ -45,11 +45,19 @@ class SkillModelTestCase(BaseModelTestCase, TestCase):
     fields = {
         "name": "python",
         "logo": None,
+        "priority": 1,
     }
     fields_2 = {
         "name": "django",
         "logo": None,
+        "priority": 2,
     }
+
+    def test_ordering(self):
+        instance1 = self.model._default_manager.create(**self.fields)
+        instance2 = self.model._default_manager.create(**self.fields_2)
+        instances = self.model._default_manager.all()
+        self.assertEqual(list(instances), [instance1, instance2])
 
 
 class ProjectModelTestCase(BaseModelTestCase, TestCase):
