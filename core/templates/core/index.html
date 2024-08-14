@@ -105,19 +105,20 @@
         <h6 class="section-title mb-6">Skills</h6>
         <!-- row -->
         <div class="row">
-            {%  %}
-            <div class="col-md-6 col-lg-3">
-                <div class="service-card">
-                    <div class="body">
-                        <img src="assets/imgs/pencil-case.svg"
-                             alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
-                             class="icon">
-                        <h6 class="title">Adipisicing</h6>
-                        <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
-                            molestias dolorem iste quod.</p>
+            {% for skill in skills %}
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static 'media/kills' %}"
+                                 alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
+                                 class="icon">
+                            <h6 class="title">Adipisicing</h6>
+                            <p class="subtitle">Labore velit culpa adipisci excepturi consequuntur itaque in nam
+                                molestias dolorem iste quod.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div><!-- end of row -->
     </div>
 </section><!-- end of service section -->
