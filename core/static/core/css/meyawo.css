@@ -11134,7 +11134,6 @@ p {
 .service-card {
   position: relative;
   min-height: 230px;
-  border: 1px solid #dee2e6;
   overflow: hidden;
   border-radius: 3px;
 }
@@ -11144,9 +11143,7 @@ p {
 }
 
 .service-card .body img.icon {
-  margin-top: 40px;
-  width: 55px;
-  margin-bottom: 25px;
+  max-width: 80px;
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
