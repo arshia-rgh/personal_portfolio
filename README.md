@@ -22,7 +22,7 @@ This is a personal portfolio website built using Django. It showcases various pr
 1. Clone the repository:
     ```bash
     git clone https://github.com/serene1212/portfolio-website.git
-    cd portfolio-website
+    cd personal_portfolio
     ```
 
 2. Create a virtual environment and activate it:
