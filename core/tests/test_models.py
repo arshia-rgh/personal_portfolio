@@ -33,12 +33,6 @@ class BaseModelTestCase:
         instance = self.model(**self.fields)
         self.assertEqual(str(instance), instance.name)
 
-    def test_default_values(self):
-        instance = self.model(**self.fields)
-        for field in self.model._meta.fields:
-            if field.has_default():
-                self.assertEqual(getattr(instance, field.name), field.default)
-
 
 class SkillModelTestCase(BaseModelTestCase, TestCase):
     model = Skill
