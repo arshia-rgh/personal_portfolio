@@ -4,12 +4,15 @@ from django import views
 from django.http import FileResponse
 from django.shortcuts import render
 
-from core.models import Skill
+from core.models import Skill, Project
 
 
 def test_view(request):
     skills = Skill.objects.all()
-    return render(request, "core/index.html", context={"skills": skills})
+    projects = Project.objects.all()
+    return render(
+        request, "core/index.html", context={"skills": skills, "projects": projects}
+    )
 
 
 class DownloadCView(views.View):
