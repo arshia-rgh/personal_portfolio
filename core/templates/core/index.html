@@ -155,21 +155,15 @@
             {% for job in jobs %}
             	<div class="pricing-card">
                 <div class="pricing-card-body">
-                    <h6 class="pricing-card-title">Free</h6>
+                    <h6 class="pricing-card-title">{{ job.company_name }}</h6>
                     <div class="pricing-card-list">
-                        <p>accusamus reprehenderit</p>
-                        <p>provident dolorem </p>
-                        <p>quos neque</p>
-                        <p>fugiat quibusdam</p>
-                        <p><i class="ti-close"></i></p>
-                        <p><i class="ti-close"></i></p>
+                        <P>{{ job.start_date.date }} - {{ job.end_date.date }}</P>
+
                     </div>
                 </div>
                 <div class="pricing-card-footer">
-                    <span>$</span>
-                    <span>0.00/Month</span>
+                    <span>{{ job.position }}</span>
                 </div>
-                <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
             </div>
             {% endfor %}
 
