@@ -4,14 +4,17 @@ from django import views
 from django.http import FileResponse
 from django.shortcuts import render
 
-from core.models import Skill, Project
+from core.models import Skill, Project, JobExperience
 
 
 def test_view(request):
     skills = Skill.objects.all()
     projects = Project.objects.all()
+    jobs = JobExperience.objects.all()
     return render(
-        request, "core/index.html", context={"skills": skills, "projects": projects}
+        request,
+        "core/index.html",
+        context={"skills": skills, "projects": projects, "jobs": jobs},
     )
 
 
