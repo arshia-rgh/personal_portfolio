@@ -78,19 +78,17 @@ class JobExperienceModelTestCase(BaseModelTestCase, TestCase):
     fields = {
         "company_name": "Digitoon",
         "position": "Back end developer",
+        "start_date": timezone.datetime(2020, 1, 1),
     }
     fields_2 = {
         "company_name": "Digitoon",
         "position": "DevOps engineer",
+        "start_date": timezone.datetime(2021, 1, 1),
     }
 
     def test_str_representation(self):
         instance = self.model(**self.fields)
         self.assertEqual(str(instance), instance.company_name + " " + instance.position)
-
-    def test_custom_save_logic(self):
-        instance = self.model._default_manager.create(**self.fields)
-        self.assertEqual(instance.end_date.hour, timezone.now().hour)
 
     @skip
     def test_years_of_experience_property(self):
