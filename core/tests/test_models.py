@@ -86,6 +86,12 @@ class JobExperienceModelTestCase(BaseModelTestCase, TestCase):
         "start_date": timezone.datetime(2021, 1, 1),
     }
 
+    def test_ordering(self):
+        instance1 = self.model._default_manager.create(**self.fields)
+        instance2 = self.model._default_manager.create(**self.fields_2)
+        instances = self.model._default_manager.all()
+        self.assertEqual(list(instances), [instance2, instance1])
+
     def test_str_representation(self):
         instance = self.model(**self.fields)
         self.assertEqual(str(instance), instance.company_name + " " + instance.position)

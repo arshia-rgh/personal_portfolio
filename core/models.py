@@ -38,6 +38,9 @@ class JobExperience(BaseModel):
     start_date = models.DateField()
     end_date = models.DateField(default=None, blank=True, null=True)
 
+    class Meta:
+        ordering = ["-start_date"]
+
     @property
     def years_of_experience(self):
         if self.end_date:
