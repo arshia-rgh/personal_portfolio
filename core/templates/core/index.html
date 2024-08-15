@@ -153,18 +153,22 @@
         <!-- row -->
         <div class="pricing-wrapper">
             {% for job in jobs %}
-            	<div class="pricing-card">
-                <div class="pricing-card-body">
-                    <h6 class="pricing-card-title">{{ job.company_name }}</h6>
-                    <div class="pricing-card-list">
-                        <P>{{ job.start_date.date }} - {{ job.end_date.date }}</P>
+                <div class="pricing-card">
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title">{{ job.company_name }}</h6>
+                        <div class="pricing-card-list">
+                            {% if job.end_date %}
+                                <P>{{ job.start_date|date:"Y F" }} - {{ job.end_date|date:"Y F" }}</P>
+                            {% else %}
+                                <P>{{ job.start_date|date:"Y F" }} - Present</P>
 
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <span>{{ job.position }}</span>
                     </div>
                 </div>
-                <div class="pricing-card-footer">
-                    <span>{{ job.position }}</span>
-                </div>
-            </div>
             {% endfor %}
 
 
