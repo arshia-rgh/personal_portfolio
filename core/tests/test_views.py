@@ -1,6 +1,3 @@
-from encodings.punycode import selective_find
-from http.client import responses
-
 from django.test import TestCase
 from django.urls import reverse
 
