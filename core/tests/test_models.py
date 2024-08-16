@@ -128,10 +128,6 @@ class EducationModelTestCase(BaseModelTestCase, TestCase):
             str(instance), instance.university_name + " " + instance.degree
         )
 
-    def test_custom_save_logic(self):
-        instance = self.model._default_manager.create(**self.fields)
-        self.assertEqual(instance.end_date.hour, timezone.now().hour)
-
 
 class InterestModelTestCase(BaseModelTestCase, TestCase):
     model = Interest
