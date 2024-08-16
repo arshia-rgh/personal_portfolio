@@ -2,33 +2,30 @@ import os.path
 
 from django import views
 from django.http import FileResponse
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
 
 
-def test_view(request):
-    skills = Skill.objects.all()
-    projects = Project.objects.all()
-    jobs = JobExperience.objects.all()
-    educations = Education.objects.all()
-    interests = Interest.objects.all()
-    certificates = Certificate.objects.all()
-    return render(
-        request,
-        "core/index.html",
-        context={
-            "skills": skills,
-            "projects": projects,
-            "jobs": jobs,
-            "educations": educations,
-            "interests": interests,
-            "certificates": certificates,
-        },
-    )
+class HomeView(TemplateView):
+    template_name = "core/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "arshia"
+        context["skills"] = Skill.objects.all()
+        context["projects"] = Project.objects.all()
+        context["jobs"] = JobExperience.objects.all()
+        context["educations"] = Education.objects.all()
+        context["interests"] = Interest.objects.all()
+        context["certificates"] = Certificate.objects.all()
+        return context
 
 
-class DownloadCView(views.View):
+home_view = HomeView.as_view()
+
+
+class DownloadCVView(views.View):
     def get(self, request, *args, **kwargs):
         file_path = os.path.join(os.getcwd(), "files/resume.pdf")
         return FileResponse(
@@ -36,4 +33,4 @@ class DownloadCView(views.View):
         )
 
 
-download_cv_view = DownloadCView.as_view()
+download_cv_view = DownloadCVView.as_view()
