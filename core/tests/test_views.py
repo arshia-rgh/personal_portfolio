@@ -14,3 +14,9 @@ class HomeViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIsNotNone(response.context["title"])
+        self.assertIsNotNone(response.context["skills"])
+        self.assertIsNotNone(response.context["projects"])
+        self.assertIsNotNone(response.context["jobs"])
+        self.assertIsNotNone(response.context["educations"])
+        self.assertIsNotNone(response.context["interests"])
+        self.assertIsNotNone(response.context["certificates"])

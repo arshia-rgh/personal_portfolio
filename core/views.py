@@ -1,46 +1,24 @@
 import os.path
-from lib2to3.fixes.fix_input import context
 
 from django import views
 from django.http import FileResponse
-from django.shortcuts import render
-from django.template.context_processors import request
-from django.template.defaultfilters import title
 from django.views.generic import TemplateView
 
 from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
 
 
-# def test_view(request):
-#     skills = Skill.objects.all()
-#     projects = Project.objects.all()
-#     jobs = JobExperience.objects.all()
-#     educations = Education.objects.all()
-#     interests = Interest.objects.all()
-#     certificates = Certificate.objects.all()
-#     return render(
-#         request,
-#         "core/index.html",
-#         context={
-#             "skills": skills,
-#             "projects": projects,
-#             "jobs": jobs,
-#             "educations": educations,
-#             "interests": interests,
-#             "certificates": certificates,
-#         },
-#     )
 class HomeView(TemplateView):
-    def get_template_names(self):
-        return ["core/index.html"]
+    template_name = "core/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.request.path == "/":
-            title = "arshia"
-        else:
-            title = "contact me"
-        context.setdefault("title", title)
+        context["title"] = "arshia" if self.request.path == "/" else "contact me"
+        context["skills"] = Skill.objects.all()
+        context["projects"] = Project.objects.all()
+        context["jobs"] = JobExperience.objects.all()
+        context["educations"] = Education.objects.all()
+        context["interests"] = Interest.objects.all()
+        context["certificates"] = Certificate.objects.all()
         return context
 
 
