@@ -12,7 +12,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "arshia" if self.request.path == "/" else "contact me"
+        context["title"] = "arshia"
         context["skills"] = Skill.objects.all()
         context["projects"] = Project.objects.all()
         context["jobs"] = JobExperience.objects.all()
