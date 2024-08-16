@@ -196,14 +196,16 @@
         <!-- row -->
         <div class="row">
             <div class="col-md-6">
-                <div class="testimonial-card">
-                    <div class="testimonial-card-body">
-                        <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis
-                            adipisci nihil.</p>
-                        <h6 class="testimonial-card-title">Emily Reb</h6>
+                {% for education in educations %}
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-body">
+                            <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis
+                                adipisci nihil.</p>
+                            <h6 class="testimonial-card-title">Emily Reb</h6>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div> <!-- end of container -->
