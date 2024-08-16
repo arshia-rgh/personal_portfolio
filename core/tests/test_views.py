@@ -1,5 +1,9 @@
+from http.client import responses
+
 from django.test import TestCase
 from django.urls import reverse
+
+from core.models import Skill
 
 
 class HomeViewTestCase(TestCase):
@@ -20,3 +24,10 @@ class HomeViewTestCase(TestCase):
         self.assertIsNotNone(response.context["educations"])
         self.assertIsNotNone(response.context["interests"])
         self.assertIsNotNone(response.context["certificates"])
+
+    def test_specific_context_values(self):
+        Skill.objects.create(name="Python", priority=1)
+        response = self.client.get(reverse("core:home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("Python", [skill.name for skill in response.context["skills"]])
