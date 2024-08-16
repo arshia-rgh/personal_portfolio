@@ -12118,6 +12118,35 @@ pre .code {
   margin-top: -10px;
   margin-bottom: 20px;
 }
+.header .social-links {
+    -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+
+}
+
+.header .social-links a {
+  pointer-events: auto;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.header .social-links a:hover {
+  background: #695aa6;
+  border-color: #695aa6;
+  color: #fff;
+  text-decoration: none;
+}
 
 .header .header-content .btn {
   position: relative;
