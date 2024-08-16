@@ -1,3 +1,4 @@
+from encodings.punycode import selective_find
 from http.client import responses
 
 from django.test import TestCase
@@ -34,4 +35,8 @@ class HomeViewTestCase(TestCase):
 
 
 class DownloadCVViewTestCase(TestCase):
-    pass
+    def test_file_download(self):
+        response = self.client.get(reverse("core:download_cv"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/pdf")
