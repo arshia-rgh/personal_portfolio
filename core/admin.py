@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import Skill, Project, JobExperience, Education, Interest
+from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
 
 
 @admin.register(Skill)
@@ -25,4 +25,9 @@ class EducationAdmin(admin.ModelAdmin):
 
 @admin.register(Interest)
 class InterestAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Certificate)
+class CertificateAdmin(admin.ModelAdmin):
     pass
