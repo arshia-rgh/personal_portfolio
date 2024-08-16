@@ -28,7 +28,11 @@ from core.models import Skill, Project, JobExperience, Education, Interest, Cert
 #         },
 #     )
 class HomeView(TemplateView):
-    pass
+    def get_template_names(self):
+        return ["core/index.html"]
+
+    def get_context_data(self, **kwargs):
+        pass
 
 
 home_view = HomeView.as_view()
