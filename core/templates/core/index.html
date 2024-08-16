@@ -13,7 +13,7 @@
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="{% static 'core/css/meyawo.css' %}">
 
-{#    font awsome #}
+    {#    font awsome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -69,13 +69,10 @@
             <span class="down">I am Arshia Rezagholi</span>
         </h1>
         <p class="header-subtitle">BackEnd developer </p>
-        <div class="social-links m-auto ml-sm-auto">
-            <a href="https://www.linkedin.com/in/your-profile" class="link" target="_blank">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/serene1212" class="link" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
+        <div class="social-links text-left m-auto ml-sm-auto">
+            <a href="https://www.github.com/serene1212" class="link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/arshia-rezagholi-959808316/" class="link" target="_blank"><i
+                    class="ti-linkedin"></i></a><br>
         </div>
     </div>
 </header><!-- end of page header -->
@@ -120,7 +117,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <div class="body">
-                            {% if skill.logo  %}
+                            {% if skill.logo %}
                                 <img src="{{ skill.logo.url }}"
                                      alt=" {{ skill.name }}"
                                      class="icon">
@@ -203,7 +200,9 @@
                         <div class="testimonial-card-body">
                             <H6 class="testimonial-card-title">{{ education.university_name }}</H6>
                             <p class="education-degree">{{ education.degree }}</p>
-                            <p class="education-dates">{{ education.start_date|date:"Y F" }} - {% if education.end_date %}{{ education.end_date|date:"Y F" }}{% else %}Present{% endif %}</p>
+                            <p class="education-dates">{{ education.start_date|date:"Y F" }} -
+                                {% if education.end_date %}{{ education.end_date|date:"Y F" }}{% else %}
+                                    Present{% endif %}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -220,10 +219,10 @@
         <h6 class="section-title mb-6">Interests</h6>
         {% for interest in interests %}
             <div class="blog-card">
-                    <div class="blog-card-body">
-                        <h5 class="blog-card-title">{{ interest.name }}</h5>
-                            <p>{{ interest.description }}.</p>
-                    </div>
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">{{ interest.name }}</h5>
+                    <p>{{ interest.description }}.</p>
+                </div>
             </div>
         {% endfor %}
     </div><!-- end of container -->
@@ -236,7 +235,8 @@
         <ul class="list-unstyled certificates-list">
             {% for certificate in certificates %}
                 <li class="certificate-item">
-                    {{ certificate.name }} <a class="certificate-link" href="{{ certificate.certificate_link }}" target="_blank">Certificate</a>
+                    {{ certificate.name }} <a class="certificate-link" href="{{ certificate.certificate_link }}"
+                                              target="_blank">Certificate</a>
                 </li>
             {% endfor %}
         </ul>
@@ -246,18 +246,17 @@
 <!-- footer -->
 <div class="container">
     <footer class="footer">
-        <p class="mb-0">Copyright
-            <script>document.write(new Date().getFullYear())</script> &copy; <a
-                    href="http://www.devcrud.com">DevCRUD</a> Distribution <a
-                    href="https://themewagon.com">ThemeWagon</a>
-        </p>
-        <div class="social-links text-right m-auto ml-sm-auto">
-            <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
-            <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
-            <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
-            <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
-            <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
-            <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+        <div class="social-links text-md-center m-auto ml-sm-auto">
+            <a href="https://www.instagram.com/arshia._.rezagholi" class="link" target="_blank"><i
+                    class="ti-instagram"></i></a>
+            <a href="https://www.github.com/serene1212" class="link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/arshia-rezagholi-959808316/" class="link" target="_blank"><i
+                    class="ti-linkedin"></i></a>
+            <a href="https://t.me/arshia_rgh" class="link" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="tel:+989388080022" class="link"><i class="fas fa-phone"></i></a>
+            <a href="mailto:arshiarezagholi1212@gmail.com" class="link"><i class="fas fa-envelope"></i></a>
+
+
         </div>
     </footer>
 </div> <!-- end of page footer -->
