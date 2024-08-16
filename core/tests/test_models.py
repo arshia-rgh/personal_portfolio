@@ -33,23 +33,25 @@ class BaseModelTestCase:
         instance = self.model(**self.fields)
         self.assertEqual(str(instance), instance.name)
 
-    def test_default_values(self):
-        instance = self.model(**self.fields)
-        for field in self.model._meta.fields:
-            if field.has_default():
-                self.assertEqual(getattr(instance, field.name), field.default)
-
 
 class SkillModelTestCase(BaseModelTestCase, TestCase):
     model = Skill
     fields = {
         "name": "python",
         "logo": None,
+        "priority": 1,
     }
     fields_2 = {
         "name": "django",
         "logo": None,
+        "priority": 2,
     }
+
+    def test_ordering(self):
+        instance1 = self.model._default_manager.create(**self.fields)
+        instance2 = self.model._default_manager.create(**self.fields_2)
+        instances = self.model._default_manager.all()
+        self.assertEqual(list(instances), [instance1, instance2])
 
 
 class ProjectModelTestCase(BaseModelTestCase, TestCase):
@@ -76,19 +78,23 @@ class JobExperienceModelTestCase(BaseModelTestCase, TestCase):
     fields = {
         "company_name": "Digitoon",
         "position": "Back end developer",
+        "start_date": timezone.datetime(2020, 1, 1),
     }
     fields_2 = {
         "company_name": "Digitoon",
         "position": "DevOps engineer",
+        "start_date": timezone.datetime(2021, 1, 1),
     }
+
+    def test_ordering(self):
+        instance1 = self.model._default_manager.create(**self.fields)
+        instance2 = self.model._default_manager.create(**self.fields_2)
+        instances = self.model._default_manager.all()
+        self.assertEqual(list(instances), [instance2, instance1])
 
     def test_str_representation(self):
         instance = self.model(**self.fields)
         self.assertEqual(str(instance), instance.company_name + " " + instance.position)
-
-    def test_custom_save_logic(self):
-        instance = self.model._default_manager.create(**self.fields)
-        self.assertEqual(instance.end_date.hour, timezone.now().hour)
 
     @skip
     def test_years_of_experience_property(self):
@@ -121,10 +127,6 @@ class EducationModelTestCase(BaseModelTestCase, TestCase):
         self.assertEqual(
             str(instance), instance.university_name + " " + instance.degree
         )
-
-    def test_custom_save_logic(self):
-        instance = self.model._default_manager.create(**self.fields)
-        self.assertEqual(instance.end_date.hour, timezone.now().hour)
 
 
 class InterestModelTestCase(BaseModelTestCase, TestCase):

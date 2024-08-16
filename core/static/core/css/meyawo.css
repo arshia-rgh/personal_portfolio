@@ -11134,7 +11134,6 @@ p {
 .service-card {
   position: relative;
   min-height: 230px;
-  border: 1px solid #dee2e6;
   overflow: hidden;
   border-radius: 3px;
 }
@@ -11144,9 +11143,7 @@ p {
 }
 
 .service-card .body img.icon {
-  margin-top: 40px;
-  width: 55px;
-  margin-bottom: 25px;
+  max-width: 80px;
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
@@ -11258,11 +11255,12 @@ p {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pricing-wrapper .pricing-card {
   display: block;
-  border: 1px solid #dee2e6;
   padding: 30px 15px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -11274,6 +11272,17 @@ p {
   background: #fff;
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
+  width: 80%;
+  margin: 10px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+.pricing-card:not(:last-child)::after {
+  width: 2px;
+  height: 20px;
+  background-color: #ccc;
+  display: block;
+  margin: 0 auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -11367,6 +11376,17 @@ p {
           align-items: center;
   margin-bottom: 30px;
 }
+.education-dates {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+.education-degree {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10px;
+}
 
 .testimonial-card-img-holder {
   min-width: 45px;
@@ -11392,7 +11412,7 @@ p {
 
 .testimonial-card-title {
   margin-top: 20px;
-  font-size: calc(14px + (18 - 14) * ((100vw - 300px) / (1300 - 300)));
+  font-size: calc(17px + (20 - 14) * ((100vw - 300px) / (1300 - 300)));
 }
 
 /* blog wrapper */
@@ -12061,7 +12081,7 @@ pre .code {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-image: url(../imgs/header.jpg);
+  background-image: url(../img/header.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -12108,6 +12128,35 @@ pre .code {
   opacity: .8;
   margin-top: -10px;
   margin-bottom: 20px;
+}
+.header .social-links {
+    -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+
+}
+
+.header .social-links a {
+  pointer-events: auto;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.header .social-links a:hover {
+  background: #695aa6;
+  border-color: #695aa6;
+  color: #fff;
+  text-decoration: none;
 }
 
 .header .header-content .btn {
@@ -12231,4 +12280,39 @@ pre .code {
 
 .section-lg {
   padding: 100px 0 !important;
+}
+.certificates-list {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 800px;
+  list-style: none;
+}
+
+.certificate-item {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.certificate-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.certificate-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
 }
