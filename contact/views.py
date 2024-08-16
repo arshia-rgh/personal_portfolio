@@ -4,3 +4,6 @@ from django.views.generic import CreateView
 
 class ContactView(CreateView):
     pass
+
+
+contact_view = ContactView.as_view()
