@@ -230,12 +230,11 @@
 <!-- contact section -->
 <section class="section" id="certificates">
     <div class="container text-center">
-        <p class="section-subtitle">How can you communicate?</p>
-        <h6 class="section-title mb-5">Certificates</h6>
-        <ul class="list-unstyled">
+        <h6 class="section-title mb-5">Course && Certificates</h6>
+        <ul class="list-unstyled certificates-list">
             {% for certificate in certificates %}
-                <li>
-                    <a href="{{ certificate.certificate_link }}" target="_blank">{{ certificate.name }}</a>
+                <li class="certificate-item">
+                    {{ certificate.name }} <a class="certificate-link" href="{{ certificate.certificate_link }}" target="_blank">Certificate</a>
                 </li>
             {% endfor %}
         </ul>
