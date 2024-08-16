@@ -31,3 +31,7 @@ class HomeViewTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn("Python", [skill.name for skill in response.context["skills"]])
+
+
+class DownloadCVViewTestCase(TestCase):
+    pass

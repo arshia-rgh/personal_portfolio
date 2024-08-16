@@ -25,7 +25,7 @@ class HomeView(TemplateView):
 home_view = HomeView.as_view()
 
 
-class DownloadCView(views.View):
+class DownloadCVView(views.View):
     def get(self, request, *args, **kwargs):
         file_path = os.path.join(os.getcwd(), "files/resume.pdf")
         return FileResponse(
@@ -33,4 +33,4 @@ class DownloadCView(views.View):
         )
 
 
-download_cv_view = DownloadCView.as_view()
+download_cv_view = DownloadCVView.as_view()
