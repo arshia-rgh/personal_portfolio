@@ -3,8 +3,13 @@ from utils.base_model import BaseModel
 
 
 class Sender(BaseModel):
-    pass
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    class Meta:
+        abstract = True
 
 
-class Message(BaseModel):
-    pass
+class Message(Sender):
+    title = models.CharField(max_length=100)
+    body = models.TextField()
