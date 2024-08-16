@@ -1,8 +1,11 @@
 import os.path
+from lib2to3.fixes.fix_input import context
 
 from django import views
 from django.http import FileResponse
 from django.shortcuts import render
+from django.template.context_processors import request
+from django.template.defaultfilters import title
 from django.views.generic import TemplateView
 
 from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
@@ -32,7 +35,13 @@ class HomeView(TemplateView):
         return ["core/index.html"]
 
     def get_context_data(self, **kwargs):
-        pass
+        context = super().get_context_data(**kwargs)
+        if self.request.path == "/":
+            title = "arshia"
+        else:
+            title = "contact me"
+        context.setdefault("title", title)
+        return context
 
 
 home_view = HomeView.as_view()
