@@ -199,10 +199,9 @@
                 {% for education in educations %}
                     <div class="testimonial-card">
                         <div class="testimonial-card-body">
-                            <p class="testimonial-card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit. Eaque doloribus autem aperiam earum nostrum omnis blanditiis corporis perspiciatis
-                                adipisci nihil.</p>
-                            <h6 class="testimonial-card-title">Emily Reb</h6>
+                            <H6 class="testimonial-card-title">{{ education.university_name }}</H6>
+                            <p class="education-degree">{{ education.degree }}</p>
+                            <p class="education-dates">{{ education.start_date|date:"Y F" }} - {% if education.end_date %}{{ education.end_date|date:"Y F" }}{% else %}Present{% endif %}</p>
                         </div>
                     </div>
                 {% endfor %}

@@ -11376,6 +11376,17 @@ p {
           align-items: center;
   margin-bottom: 30px;
 }
+.education-dates {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+.education-degree {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 10px;
+}
 
 .testimonial-card-img-holder {
   min-width: 45px;
@@ -11401,7 +11412,7 @@ p {
 
 .testimonial-card-title {
   margin-top: 20px;
-  font-size: calc(14px + (18 - 14) * ((100vw - 300px) / (1300 - 300)));
+  font-size: calc(17px + (20 - 14) * ((100vw - 300px) / (1300 - 300)));
 }
 
 /* blog wrapper */
