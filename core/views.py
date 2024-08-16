@@ -3,29 +3,35 @@ import os.path
 from django import views
 from django.http import FileResponse
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from core.models import Skill, Project, JobExperience, Education, Interest, Certificate
 
 
-def test_view(request):
-    skills = Skill.objects.all()
-    projects = Project.objects.all()
-    jobs = JobExperience.objects.all()
-    educations = Education.objects.all()
-    interests = Interest.objects.all()
-    certificates = Certificate.objects.all()
-    return render(
-        request,
-        "core/index.html",
-        context={
-            "skills": skills,
-            "projects": projects,
-            "jobs": jobs,
-            "educations": educations,
-            "interests": interests,
-            "certificates": certificates,
-        },
-    )
+# def test_view(request):
+#     skills = Skill.objects.all()
+#     projects = Project.objects.all()
+#     jobs = JobExperience.objects.all()
+#     educations = Education.objects.all()
+#     interests = Interest.objects.all()
+#     certificates = Certificate.objects.all()
+#     return render(
+#         request,
+#         "core/index.html",
+#         context={
+#             "skills": skills,
+#             "projects": projects,
+#             "jobs": jobs,
+#             "educations": educations,
+#             "interests": interests,
+#             "certificates": certificates,
+#         },
+#     )
+class HomeView(TemplateView):
+    pass
+
+
+home_view = HomeView.as_view()
 
 
 class DownloadCView(views.View):
