@@ -4,7 +4,7 @@ from django import views
 from django.http import FileResponse
 from django.shortcuts import render
 
-from core.models import Skill, Project, JobExperience, Education
+from core.models import Skill, Project, JobExperience, Education, Interest
 
 
 def test_view(request):
@@ -12,6 +12,7 @@ def test_view(request):
     projects = Project.objects.all()
     jobs = JobExperience.objects.all()
     educations = Education.objects.all()
+    interests = Interest.objects.all()
     return render(
         request,
         "core/index.html",
@@ -20,6 +21,7 @@ def test_view(request):
             "projects": projects,
             "jobs": jobs,
             "educations": educations,
+            "interests": interests,
         },
     )
 
