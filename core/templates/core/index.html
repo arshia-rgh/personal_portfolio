@@ -218,25 +218,12 @@
         <h6 class="section-title mb-6">Interests</h6>
         <!-- blog-wrapper -->
         <div class="blog-card">
-            <div class="blog-card-body">
-                <h5 class="blog-card-title">Explicabo illo</h6>
-
-                    <p class="blog-card-caption">
-                        <a href="#">By: Admin</a>
-                        <a href="#"><i class="ti-heart text-danger"></i> 456</a>
-                        <a href="#"><i class="ti-comment"></i> 264</a>
-                    </p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit excepturi laborum enim,
-                        vitae ipsam atque eum, ad iusto consequuntur voluptas, esse doloribus. Perferendis porro
-                        quisquam vitae exercitationem aliquid, minus eos laborum repudiandae, cumque debitis iusto
-                        omnis praesentium? Laborum placeat sit adipisci illum tempore maxime, esse qui quae?
-                        Molestias excepturi corporis similique doloribus. Esse vitae earum architecto nulla non
-                        dolores illum at perspiciatis quod, et deleniti cupiditate reiciendis harum facere, delectus
-                        eum commodi soluta distinctio sit repudiandae possimus sunt. Ipsum, rem.</p>
-
-                    <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
-            </div>
+            {% for interest in interests %}
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">{{ interest.name }}</h5>
+                        <p>{{ interest.description }}.</p>
+                </div>
+            {% endfor %}
         </div><!-- end of blog wrapper -->
 
     </div><!-- end of container -->
