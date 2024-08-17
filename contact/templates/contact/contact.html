@@ -5,6 +5,12 @@
     <link rel="stylesheet" href="{% static 'contact/css/contact.css' %}">
 {% endblock %}
 
+{% block navbar %}
+    <li class="item">
+        <a class="link" href="{% url 'core:home' %}">Back to Home</a>
+    </li>
+{% endblock %}
+
 {% block content %}
     <section class="header">
         <div class="container text-center">
