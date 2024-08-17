@@ -7,7 +7,7 @@ class Sender(BaseModel):
     name = models.CharField(max_length=100)
     email = models.EmailField()
 
-    class Meta:
+    class Meta(BaseModel.Meta):
         abstract = True
 
 
