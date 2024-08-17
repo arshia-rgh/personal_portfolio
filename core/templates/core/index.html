@@ -158,7 +158,7 @@
             <p class="section-subtitle">What I Did ?</p>
             <h6 class="section-title mb-6">Projects</h6>
             <!-- row -->
-            <div class="row">
+            <div class="project-column">
                 {% for project in projects %}
                     <div class="col-md-4">
                         <div class="project-card">
@@ -170,10 +170,12 @@
                                                 <span class="project-skill">{{ tech }}</span>
                                             {% endfor %}
                                         </div>
-                                            <p class="font-weight-normal">{{ project.description }}</p>
+                                        <hr class="project-separator">
+                                        <p class="font-weight-normal">{{ project.description }}</p>
+                                        <hr class="project-separator">
                                         <a href="{{ project.live_link }}">Live Link</a><br>
                                         <a href="{{ project.source_link }}">Source Link</a><br><br>
-                                        {{ project.status }}
+                                        <span class="project-status">{{ project.status }}</span>
                                     </span>
                             </span>
                         </div>
@@ -189,24 +191,30 @@
             <h6 class="section-title mb-6">Job Experiences</h6>
             <!-- row -->
             <div class="pricing-wrapper">
-                {% for job in jobs %}
-                    <div class="pricing-card">
-                        <div class="pricing-card-body">
-                            <h6 class="pricing-card-title">{{ job.company_name }}</h6>
-                            <div class="pricing-card-list">
-                                {% if job.end_date %}
-                                    <P>{{ job.start_date|date:"Y F" }} - {{ job.end_date|date:"Y F" }}</P>
-                                {% else %}
-                                    <P>{{ job.start_date|date:"Y F" }} - Present</P>
+                {% if jobs %}
 
-                                {% endif %}
+
+                    {% for job in jobs %}
+                        <div class="pricing-card">
+                            <div class="pricing-card-body">
+                                <h6 class="pricing-card-title">{{ job.company_name }}</h6>
+                                <div class="pricing-card-list">
+                                    {% if job.end_date %}
+                                        <P>{{ job.start_date|date:"Y F" }} - {{ job.end_date|date:"Y F" }}</P>
+                                    {% else %}
+                                        <P>{{ job.start_date|date:"Y F" }} - Present</P>
+
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="pricing-card-footer">
+                                <span>{{ job.position }}</span>
                             </div>
                         </div>
-                        <div class="pricing-card-footer">
-                            <span>{{ job.position }}</span>
-                        </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center">No Related Jobs Yet</p>
+                {% endif %}
 
 
             </div><!-- end of pricing wrapper -->
