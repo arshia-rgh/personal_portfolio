@@ -1,0 +1,13 @@
+.form-horizontal .form-group {
+    margin-bottom: 1rem;
+}
+
+.form-horizontal .form-control {
+    border-radius: 0.25rem;
+}
+
+.form-horizontal .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 0.25rem;
+}

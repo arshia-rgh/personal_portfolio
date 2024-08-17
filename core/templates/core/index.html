@@ -11,10 +11,11 @@
     <!-- font icons -->
     <link rel="stylesheet" href="{% static 'core/css/themify-icons.css' %}">
     <!-- Bootstrap + Meyawo main styles -->
-    <link rel="stylesheet" href="{% static 'core/css/meyawo.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/main.min.css' %}">
 
     {#    font awsome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block css %}{% endblock %}
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -24,33 +25,36 @@
     <div class="container">
         <a class="logo" href="#">Arshia.rgh</a>
         <ul class="nav">
-            <li class="item">
-                <a class="link" href="#home">Home</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#about">About</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#skills">Skills</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#projects">Projects</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#job_experiences">Job Experiences</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#educations">Educations</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#interests">Interests</a>
-            </li>
-            <li class="item">
-                <a class="link" href="#certificates">Certificates</a>
-            </li>
+            {% block navbar %}
+                <li class="item">
+                    <a class="link" href="#home">Home</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about">About</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#skills">Skills</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#projects">Projects</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#job_experiences">Job Experiences</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#educations">Educations</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#interests">Interests</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#certificates">Certificates</a>
+                </li>
 
-            {#            add for contacts with another style to go to other page#}
-
+                <li class="item ml-md-3">
+                    <a href="{% url 'contact:contact_form' %}" class="btn btn-primary">ContactMe</a>
+                </li>
+            {% endblock %}
         </ul>
         <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
             <div class="hamburger-box">
@@ -59,88 +63,103 @@
         </a>
     </div>
 </nav><!-- End of Page Navbar -->
+{% block content %}
 
-<!-- page header -->
-<header id="home" class="header">
-    <div class="overlay"></div>
-    <div class="header-content container">
-        <h1 class="header-title">
-            <span class="up">HI!</span>
-            <span class="down">I am Arshia Rezagholi</span>
-        </h1>
-        <p class="header-subtitle">BackEnd developer </p>
-        <div class="social-links text-left m-auto ml-sm-auto">
-            <a href="https://www.github.com/serene1212" class="link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/arshia-rezagholi-959808316/" class="link" target="_blank"><i
-                    class="ti-linkedin"></i></a><br>
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">HI!</span>
+                <span class="down">I am Arshia Rezagholi</span>
+            </h1>
+            <p class="header-subtitle">BackEnd developer </p>
+            {% if messages %}
+                <div id="message-container" class="message-container">
+                    {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="social-links text-left m-auto ml-sm-auto">
+                <a href="https://www.github.com/serene1212" class="link" target="_blank"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/arshia-rezagholi-959808316/" class="link" target="_blank"><i
+                        class="ti-linkedin"></i></a><br>
+            </div>
         </div>
-    </div>
-</header><!-- end of page header -->
+    </header><!-- end of page header -->
 
-<!-- about section -->
-<section class="section pt-0" id="about">
-    <!-- container -->
-    <div class="container text-center">
-        <!-- about wrapper -->
-        <div class="about">
-            <div class="about-img-holder">
-                <img src="{% static 'core/img/lovepik-programmer-png-image_401908201_wh860-removebg-preview.png' %}"
-                     class="about-img"
-                     alt="Love programming">
-            </div>
-            <div class="about-caption">
-                <p class="section-subtitle">Who Am I ?</p>
-                <h2 class="section-title mb-3">About Me</h2>
-                <p>
-                    As an emerging backend developer specializing in Django, I am eager to apply my foundational
-                    knowledge of Python and the Django framework to real-world projects. My current expertise includes
-                    crafting basic web applications, understanding database interactions, and learning best practices
-                    for code maintainability. I am committed to professional growth and am seeking opportunities that
-                    will challenge me to evolve as a developer while contributing to a team’s success.
-                </p>
-                <button class="btn-rounded btn btn-outline-primary mt-4">
-                    <a href="{% url 'core:download_cv' %}"> Download CV</a>
-                </button>
-            </div>
-        </div><!-- end of about wrapper -->
-    </div><!-- end of container -->
-</section> <!-- end of about section -->
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- about wrapper -->
+            <div class="about">
+                <div class="about-img-holder">
+                    <img src="{% static 'core/img/lovepik-programmer-png-image_401908201_wh860-removebg-preview.png' %}"
+                         class="about-img"
+                         alt="Love programming">
+                </div>
+                <div class="about-caption">
+                    <p class="section-subtitle">Who Am I ?</p>
+                    <h2 class="section-title mb-3">About Me</h2>
+                    <p>
+                        As an emerging backend developer specializing in Django, I am eager to apply my foundational
+                        knowledge of Python and the Django framework to real-world projects. My current expertise
+                        includes
+                        crafting basic web applications, understanding database interactions, and learning best
+                        practices
+                        for code maintainability. I am committed to professional growth and am seeking opportunities
+                        that
+                        will challenge me to evolve as a developer while contributing to a team’s success.
+                    </p>
+                    <button class="btn-rounded btn btn-outline-primary mt-4">
+                        <a href="{% url 'core:download_cv' %}"> Download CV</a>
+                    </button>
+                </div>
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
 
-<!-- service section -->
-<section class="section" id="skills">
-    <div class="container text-center">
-        <p class="section-subtitle">What I Know ?</p>
-        <h6 class="section-title mb-6">Skills</h6>
-        <!-- row -->
-        <div class="row">
-            {% for skill in skills %}
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
-                            {% if skill.logo %}
-                                <img src="{{ skill.logo.url }}"
-                                     alt=" {{ skill.name }}"
-                                     class="icon">
-                            {% endif %}
-                            <h6 class="title">{{ skill.name }}</h6>
-                            <p class="subtitle">{{ skill.description }}.</p>
+    <!-- service section -->
+    <section class="section" id="skills">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Know ?</p>
+            <h6 class="section-title mb-6">Skills</h6>
+            <!-- row -->
+            <div class="row">
+                {% for skill in skills %}
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card">
+                            <div class="body">
+                                {% if skill.logo %}
+                                    <img src="{{ skill.logo.url }}"
+                                         alt=" {{ skill.name }}"
+                                         class="icon">
+                                {% endif %}
+                                <h6 class="title">{{ skill.name }}</h6>
+                                <p class="subtitle">{{ skill.description }}.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div><!-- end of row -->
-    </div>
-</section><!-- end of service section -->
+                {% endfor %}
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of service section -->
 
-<!-- portfolio section -->
-<section class="section" id="projects">
-    <div class="container text-center">
-        <p class="section-subtitle">What I Did ?</p>
-        <h6 class="section-title mb-6">Projects</h6>
-        <!-- row -->
-        <div class="row">
-            {% for project in projects %}
-                <div class="col-md-4">
+    <!-- portfolio section -->
+    <section class="section" id="projects">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Did ?</p>
+            <h6 class="section-title mb-6">Projects</h6>
+            <!-- row -->
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-md-4">
                         <span class="portfolio-card-overlay">
                                 <span class="portfolio-card-caption">
                                     <h3>{{ project.name }}</h3>
@@ -150,99 +169,99 @@
                                     {{ project.status }}
                                 </span>
                         </span>
-                </div>
-            {% endfor %}
-        </div><!-- end of row -->
-    </div><!-- end of container -->
-</section> <!-- end of portfolio section -->
+                    </div>
+                {% endfor %}
+            </div><!-- end of row -->
+        </div><!-- end of container -->
+    </section> <!-- end of portfolio section -->
 
-<!-- pricing section -->
-<section class="section" id="job_experiences">
-    <div class="container text-center">
-        <h6 class="section-title mb-6">Job Experiences</h6>
-        <!-- row -->
-        <div class="pricing-wrapper">
-            {% for job in jobs %}
-                <div class="pricing-card">
-                    <div class="pricing-card-body">
-                        <h6 class="pricing-card-title">{{ job.company_name }}</h6>
-                        <div class="pricing-card-list">
-                            {% if job.end_date %}
-                                <P>{{ job.start_date|date:"Y F" }} - {{ job.end_date|date:"Y F" }}</P>
-                            {% else %}
-                                <P>{{ job.start_date|date:"Y F" }} - Present</P>
+    <!-- pricing section -->
+    <section class="section" id="job_experiences">
+        <div class="container text-center">
+            <h6 class="section-title mb-6">Job Experiences</h6>
+            <!-- row -->
+            <div class="pricing-wrapper">
+                {% for job in jobs %}
+                    <div class="pricing-card">
+                        <div class="pricing-card-body">
+                            <h6 class="pricing-card-title">{{ job.company_name }}</h6>
+                            <div class="pricing-card-list">
+                                {% if job.end_date %}
+                                    <P>{{ job.start_date|date:"Y F" }} - {{ job.end_date|date:"Y F" }}</P>
+                                {% else %}
+                                    <P>{{ job.start_date|date:"Y F" }} - Present</P>
 
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
-                    <div class="pricing-card-footer">
-                        <span>{{ job.position }}</span>
-                    </div>
-                </div>
-            {% endfor %}
-
-
-        </div><!-- end of pricing wrapper -->
-    </div> <!-- end of container -->
-</section><!-- end of pricing section -->
-
-<!-- testimonial section -->
-<section class="section" id="educations">
-    <div class="container text-center">
-        <p class="section-subtitle">University ? </p>
-        <h6 class="section-title mb-6">Educations</h6>
-
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-6">
-                {% for education in educations %}
-                    <div class="testimonial-card">
-                        <div class="testimonial-card-body">
-                            <H6 class="testimonial-card-title">{{ education.university_name }}</H6>
-                            <p class="education-degree">{{ education.degree }}</p>
-                            <p class="education-dates">{{ education.start_date|date:"Y F" }} -
-                                {% if education.end_date %}{{ education.end_date|date:"Y F" }}{% else %}
-                                    Present{% endif %}</p>
+                        <div class="pricing-card-footer">
+                            <span>{{ job.position }}</span>
                         </div>
                     </div>
                 {% endfor %}
-            </div>
-        </div>
-    </div> <!-- end of container -->
-</section> <!-- end of testimonial section -->
 
-<!-- blog section -->
-<section class="section" id="interests">
-    <!-- container -->
-    <div class="container text-center">
-        <p class="section-subtitle">My Interests ? </p>
-        <h6 class="section-title mb-6">Interests</h6>
-        {% for interest in interests %}
-            <div class="blog-card">
-                <div class="blog-card-body">
-                    <h5 class="blog-card-title">{{ interest.name }}</h5>
-                    <p>{{ interest.description }}.</p>
+
+            </div><!-- end of pricing wrapper -->
+        </div> <!-- end of container -->
+    </section><!-- end of pricing section -->
+
+    <!-- testimonial section -->
+    <section class="section" id="educations">
+        <div class="container text-center">
+            <p class="section-subtitle">University ? </p>
+            <h6 class="section-title mb-6">Educations</h6>
+
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6">
+                    {% for education in educations %}
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-body">
+                                <H6 class="testimonial-card-title">{{ education.university_name }}</H6>
+                                <p class="education-degree">{{ education.degree }}</p>
+                                <p class="education-dates">{{ education.start_date|date:"Y F" }} -
+                                    {% if education.end_date %}{{ education.end_date|date:"Y F" }}{% else %}
+                                        Present{% endif %}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-        {% endfor %}
-    </div><!-- end of container -->
-</section><!-- end of blog section -->
+        </div> <!-- end of container -->
+    </section> <!-- end of testimonial section -->
 
-<!-- contact section -->
-<section class="section" id="certificates">
-    <div class="container text-center">
-        <h6 class="section-title mb-5">Course && Certificates</h6>
-        <ul class="list-unstyled certificates-list">
-            {% for certificate in certificates %}
-                <li class="certificate-item">
-                    {{ certificate.name }} <a class="certificate-link" href="{{ certificate.certificate_link }}"
-                                              target="_blank">Certificate</a>
-                </li>
+    <!-- blog section -->
+    <section class="section" id="interests">
+        <!-- container -->
+        <div class="container text-center">
+            <p class="section-subtitle">My Interests ? </p>
+            <h6 class="section-title mb-6">Interests</h6>
+            {% for interest in interests %}
+                <div class="blog-card">
+                    <div class="blog-card-body">
+                        <h5 class="blog-card-title">{{ interest.name }}</h5>
+                        <p>{{ interest.description }}.</p>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
-    </div><!-- end of container -->
-</section><!-- end of contact section -->
+        </div><!-- end of container -->
+    </section><!-- end of blog section -->
 
+    <!-- contact section -->
+    <section class="section" id="certificates">
+        <div class="container text-center">
+            <h6 class="section-title mb-5">Course && Certificates</h6>
+            <ul class="list-unstyled certificates-list">
+                {% for certificate in certificates %}
+                    <li class="certificate-item">
+                        {{ certificate.name }} <a class="certificate-link" href="{{ certificate.certificate_link }}"
+                                                  target="_blank">Certificate</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+{% endblock %}
 <!-- footer -->
 <div class="container">
     <footer class="footer">
@@ -270,7 +289,18 @@
 
 <!-- Meyawo js -->
 <script src="{% static 'core/js/meyawo.js' %}"></script>
-
+{% block script %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const messageContainer = document.getElementById("message-container");
+        if (messageContainer) {
+            setTimeout(() => {
+                messageContainer.style.display = "none";
+            }, 5000);
+        }
+    });
+</script>
+{% endblock %}
 </body>
 
 </html>
