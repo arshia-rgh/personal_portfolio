@@ -12,12 +12,13 @@ class ContactView(View):
         return render(request, "contact/contact.html", context={"form": form})
 
     def post(self, request, *args, **kwargs):
-        form = ContactForm(request.body)
+        form = ContactForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
             # TODO add send mail logic here
 
+            form.save()
             messages.success(request, "Your message has been delivered successfully!")
             return HttpResponseRedirect(reverse("core:home"))
 
