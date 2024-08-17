@@ -27,7 +27,7 @@ class ContactView(View):
 
             form.save()
             messages.success(request, "Your message has been delivered successfully!")
-            return HttpResponseRedirect(reverse("core:home"), status=201)
+            return HttpResponseRedirect(reverse("core:home"))
 
         return render(
             request,
