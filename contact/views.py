@@ -23,7 +23,7 @@ class ContactView(View):
 
             form.save()
             messages.success(request, "Your message has been delivered successfully!")
-            return HttpResponseRedirect(reverse("core:home"))
+            return HttpResponseRedirect(reverse("core:home"), status=201)
 
         return render(request, "contact/contact.html", context={"form": form})
 
