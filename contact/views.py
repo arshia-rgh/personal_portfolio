@@ -17,8 +17,9 @@ class ContactView(View):
         if form.is_valid():
             name = form.cleaned_data["name"]
             email = form.cleaned_data["email"]
+            message = form.cleaned_data["body"]
 
-            send_email.delay()
+            send_email.delay(email=email, name=name, message=message)
 
             form.save()
             messages.success(request, "Your message has been delivered successfully!")
