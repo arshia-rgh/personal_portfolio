@@ -1,9 +1,10 @@
-from django.urls import reverse
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
+
 from .forms import ContactForm
-from django.contrib import messages
 
 
 class ContactView(View):
