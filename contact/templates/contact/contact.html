@@ -1,7 +1,30 @@
 {% extends 'core/index.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'contact/css/contact.css' %}">
+{% endblock %}
+
 {% block content %}
-<form method="post" style="z-index: 10">{% csrf_token %}
-    {{ form.as_div }}
-    <button type="submit">Send</button>
-</form>
+    <section class="header">
+        <div class="container text-center">
+            <form method="post" class="form-horizontal" style="z-index: 1000000">{% csrf_token %}
+                <div class="form-group">
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                        <div class="form-group row">
+                            <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+                            <div class="col-sm-10">
+                                {{ field }}
+                                <div class="invalid-feedback">
+                                    {{ field.errors }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </section>
 {% endblock %}
