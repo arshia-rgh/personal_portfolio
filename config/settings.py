@@ -140,3 +140,11 @@ CELERY_ENABLE_UTC = True
 CELERY_RESULT_EXPIRES = timezone.timedelta(days=1)
 CELERY_TASK_ALWAYS_EAGER = False
 CELERY_WORKER_PREFETCH_MULTIPLIER = 4
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
