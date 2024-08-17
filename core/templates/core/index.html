@@ -51,7 +51,9 @@
                 <a class="link" href="#certificates">Certificates</a>
             </li>
 
-            {#            add for contacts with another style to go to other page#}
+            <li class="item ml-md-3">
+                <a href="{% url 'contact:contact_form' %}" class="btn btn-primary">ContactMe</a>
+            </li>
         {% endblock %}
         </ul>
         <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
