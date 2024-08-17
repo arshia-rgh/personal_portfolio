@@ -28,7 +28,11 @@ class Project(BaseModel):
     live_link = models.URLField(null=True, blank=True)
     status = models.CharField(max_length=50, choices=ProjectStatusChoices.choices)
 
-    skills = models.ManyToManyField(Skill)
+    technologies = models.TextField()
+
+    @property
+    def separated_techs(self):
+        return self.technologies.split(",")
 
     def __str__(self):
         return self.name
