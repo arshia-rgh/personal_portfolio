@@ -10,7 +10,11 @@ from .forms import ContactForm
 class ContactView(View):
     def get(self, request, *args, **kwargs):
         form = ContactForm()
-        return render(request, "contact/contact.html", context={"form": form})
+        return render(
+            request,
+            "contact/contact.html",
+            context={"form": form, "title": "ContactMe"},
+        )
 
     def post(self, request, *args, **kwargs):
         form = ContactForm(request.POST)
@@ -25,7 +29,11 @@ class ContactView(View):
             messages.success(request, "Your message has been delivered successfully!")
             return HttpResponseRedirect(reverse("core:home"), status=201)
 
-        return render(request, "contact/contact.html", context={"form": form})
+        return render(
+            request,
+            "contact/contact.html",
+            context={"form": form, "title": "ContactMe"},
+        )
 
 
 contact_view = ContactView.as_view()
