@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'core/css/themify-icons.css' %}">
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="{% static 'core/css/main.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/extra.css' %}">
 
     {#    font awsome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -160,15 +161,17 @@
             <div class="row">
                 {% for project in projects %}
                     <div class="col-md-4">
-                        <span class="portfolio-card-overlay">
-                                <span class="portfolio-card-caption">
-                                    <h3>{{ project.name }}</h3>
-                                        <p class="font-weight-normal">{{ project.description }}</p>
-                                    <a href="{{ project.live_link }}">Live Link</a><br>
-                                    <a href="{{ project.source_link }}">Source Link</a><br><br>
-                                    {{ project.status }}
-                                </span>
-                        </span>
+                        <div class="project-card">
+                            <span class="portfolio-card-overlay">
+                                    <span class="portfolio-card-caption">
+                                        <h3>{{ project.name }}</h3>
+                                            <p class="font-weight-normal">{{ project.description }}</p>
+                                        <a href="{{ project.live_link }}">Live Link</a><br>
+                                        <a href="{{ project.source_link }}">Source Link</a><br><br>
+                                        {{ project.status }}
+                                    </span>
+                            </span>
+                        </div>
                     </div>
                 {% endfor %}
             </div><!-- end of row -->
@@ -291,15 +294,15 @@
 <script src="{% static 'core/js/meyawo.js' %}"></script>
 {% block script %}
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const messageContainer = document.getElementById("message-container");
-        if (messageContainer) {
-            setTimeout(() => {
-                messageContainer.style.display = "none";
-            }, 5000);
-        }
-    });
-</script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const messageContainer = document.getElementById("message-container");
+            if (messageContainer) {
+                setTimeout(() => {
+                    messageContainer.style.display = "none";
+                }, 5000);
+            }
+        });
+    </script>
 {% endblock %}
 </body>
 

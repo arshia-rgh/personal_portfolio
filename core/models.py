@@ -28,6 +28,8 @@ class Project(BaseModel):
     live_link = models.URLField(null=True, blank=True)
     status = models.CharField(max_length=50, choices=ProjectStatusChoices.choices)
 
+    skills = models.ManyToManyField(Skill)
+
     def __str__(self):
         return self.name
 
