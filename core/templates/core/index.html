@@ -15,6 +15,7 @@
 
     {#    font awsome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    {% block css %}{% endblock %}
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -24,6 +25,7 @@
     <div class="container">
         <a class="logo" href="#">Arshia.rgh</a>
         <ul class="nav">
+            {% block navbar %}
             <li class="item">
                 <a class="link" href="#home">Home</a>
             </li>
@@ -50,7 +52,7 @@
             </li>
 
             {#            add for contacts with another style to go to other page#}
-
+        {% endblock %}
         </ul>
         <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
             <div class="hamburger-box">
@@ -59,7 +61,7 @@
         </a>
     </div>
 </nav><!-- End of Page Navbar -->
-
+{% block content %}
 <!-- page header -->
 <header id="home" class="header">
     <div class="overlay"></div>
@@ -242,7 +244,7 @@
         </ul>
     </div><!-- end of container -->
 </section><!-- end of contact section -->
-
+{% endblock %}
 <!-- footer -->
 <div class="container">
     <footer class="footer">
@@ -270,7 +272,7 @@
 
 <!-- Meyawo js -->
 <script src="{% static 'core/js/meyawo.js' %}"></script>
-
+{% block script %}{% endblock %}
 </body>
 
 </html>
