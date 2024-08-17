@@ -13121,3 +13121,10 @@ pre .code {
   color: #0056b3;
   text-decoration: underline;
 }
+
+.message-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}

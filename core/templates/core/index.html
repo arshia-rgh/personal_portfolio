@@ -72,9 +72,15 @@
                 <span class="down">I am Arshia Rezagholi</span>
             </h1>
             <p class="header-subtitle">BackEnd developer </p>
-            {% for message in messages %}
-                <h1>{{ message }}</h1>
-            {% endfor %}
+            {% if messages %}
+                <div id="message-container" class="message-container">
+                    {% for message in messages %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
 
             <div class="social-links text-left m-auto ml-sm-auto">
                 <a href="https://www.github.com/serene1212" class="link" target="_blank"><i
@@ -282,7 +288,18 @@
 
 <!-- Meyawo js -->
 <script src="{% static 'core/js/meyawo.js' %}"></script>
-{% block script %}{% endblock %}
+{% block script %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const messageContainer = document.getElementById("message-container");
+        if (messageContainer) {
+            setTimeout(() => {
+                messageContainer.style.display = "none";
+            }, 5000);
+        }
+    });
+</script>
+{% endblock %}
 </body>
 
 </html>
