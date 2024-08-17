@@ -3,7 +3,7 @@
 This is a personal portfolio website built using Django. It showcases various projects, skills, job experiences, education, interests, and certificates.
 
 ## Live Link
-[Live Project Link]([#](https://arshia1212.eu.pythonanywhere.com/)) 
+[Live Project Link](https://arshia1212.eu.pythonanywhere.com/)
 
 ## Features
 - **Projects**: Display a list of projects with details such as name, description, source link, live link, and status.
