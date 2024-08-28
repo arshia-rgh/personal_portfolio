@@ -27,7 +27,7 @@ home_view = HomeView.as_view()
 
 class DownloadCVView(views.View):
     def get(self, request, *args, **kwargs):
-        file_path = os.path.join(os.getcwd(), "files/Latest_resume.pdf")
+        file_path = os.path.join(os.getcwd(), "files/Arshia_Rezagholi.pdf")
         return FileResponse(
             open(file_path, "rb"), as_attachment=True, filename="Latest_resume.pdf"
         )
